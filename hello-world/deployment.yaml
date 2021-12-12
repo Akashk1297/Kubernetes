@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: my-namespace
+spec:
+  selector:
+    matchLabels:
+      app: simpleapp
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: simpleapp
+    spec:
+      containers:
+       - name: hello-world-pod
+        image: httpd-basic-image:latest
+        ports: 
+         - containerPort: 80
+          protocol: TCP
+      imagePullSecrets:
+       - name: mysecret
+        
