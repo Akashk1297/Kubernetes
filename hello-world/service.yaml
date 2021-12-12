@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-service
+  namespace: my-namespace
+spec:
+  selector:
+    app: simpleapp
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80       # cluster internal port
+    targetPort: 80 # Port where httpd service is running inside pod
+  type: NodePort
