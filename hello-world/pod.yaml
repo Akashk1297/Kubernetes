@@ -1,15 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: 
-  namespace: mynamespace
+  name: hello-world
+  namespace: my-namespace
   labels:
     app: simpleapp
 spec:
   containers:
-    - name: web
-      image: nginx
+    - name: hello-world-container
+      image: httpd-basic-image:latest
       ports:
-        - name: web
-          containerPort: 80
+        - containerPort: 80
           protocol: TCP
+  imagePullSecrets:
+   - name: mysecret
